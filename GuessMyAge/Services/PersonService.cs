@@ -1,5 +1,6 @@
 ﻿using GuessMyAge.Models;
 using System.Text.Json;
+using System.Text.Json.Serialization;
 
 namespace GuessMyAge.Services
 {
@@ -17,10 +18,11 @@ namespace GuessMyAge.Services
         {
             using (var http = new HttpClient())
             {
-                http.BaseAddress = new Uri("https://localhost:7192");
+                http.BaseAddress = new Uri("https://localhost:5001");
                 var result = await http.GetAsync("/api/Person");
                 var response = await result.Content.ReadAsStringAsync();
                 var options = new JsonSerializerOptions() { PropertyNameCaseInsensitive = true };
+                options.Converters.Add(new DateOnlyConverter());
                 IEnumerable<Person> values = JsonSerializer.Deserialize<IEnumerable<Person>>(response, options);
                 return values;
             }
@@ -32,4 +34,29 @@ namespace GuessMyAge.Services
             persons.Add(person);
         }
     }
+}
+
+public class DateOnlyConverter : JsonConverter<DateOnly>
+{
+    private readonly string serializationFormat;
+
+    public DateOnlyConverter() : this(null)
+    {
+    }
+
+    public DateOnlyConverter(string? serializationFormat)
+    {
+        this.serializationFormat = serializationFormat ?? "yyyy-MM-dd";
+    }
+
+    public override DateOnly Read(ref Utf8JsonReader reader,
+                            Type typeToConvert, JsonSerializerOptions options)
+    {
+        var value = reader.GetString();
+        return DateOnly.Parse(value!);
+    }
+
+    public override void Write(Utf8JsonWriter writer, DateOnly value,
+                                        JsonSerializerOptions options)
+        => writer.WriteStringValue(value.ToString(serializationFormat));
 }

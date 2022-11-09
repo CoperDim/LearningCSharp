@@ -3,6 +3,7 @@ using GuessMyAge.Database.Entities;
 using GuessMyAge.Database.Repositories;
 using GuessMyAge.Models;
 using Microsoft.AspNetCore.Mvc;
+using System.Diagnostics;
 
 namespace GuessMyAge.WebApi.Controllers
 {
@@ -10,7 +11,8 @@ namespace GuessMyAge.WebApi.Controllers
     [ApiController]
     public class PersonController : ControllerBase
     {
-        private readonly IPersonService _personService;      
+        private readonly IPersonService _personService;
+
         public PersonController(IPersonService personService)
         {
             _personService = personService;
@@ -23,7 +25,7 @@ namespace GuessMyAge.WebApi.Controllers
         }
 
         [HttpGet("{id}")]
-        public ActionResult<Person> GetById([FromRoute] int id)
+        public async Task<Person> GetById([FromRoute] int id)
         {
             return _personService.GetById(id);
         }
