@@ -1,0 +1,45 @@
+{
+    "id": 0,
+    "birthDate": "1946-12-18",
+    "name": "Steven Spielberg",
+    "job": "Réalisateur",
+    "description": "Réalisateur, producteur et scénariste Américain. Connu entre autres pour ses films Jurassic Park, ET, Indiana Jones...",
+    "genre": "Man",
+    "games": []
+  }
+  {
+    "id": 0,
+    "birthDate": "1954-08-12",
+    "name": "François Hollande",
+    "job": "Politique",
+    "description": "Président de la République française du 15 mai 2012 au 14 mai 2017.",
+    "genre": "Man",
+    "games": []
+  }
+  {
+    "id": 0,
+    "birthDate": "1963-12-18",
+    "name": "Brad Pitt",
+    "job": "Réalisateur",
+    "description": "Acteur américain, a joué dans Fight Club, Benjamin Button",
+    "genre": "Man",
+    "games": []
+  }
+  {
+    "id": 0,
+    "birthDate": "1965-08-31",
+    "name": "Joanne Rowling",
+    "job": "Auteure",
+    "description": "Romancière britanique de livres pour enfants, notamment la série de livres Harry Potter",
+    "genre": "Woman",
+    "games": []
+  }
+  {
+    "id": 0,
+    "birthDate": "1943-10-22",
+    "name": "Catherine Deneuve",
+    "job": "Actrice",
+    "description": "Actrice français dont les films les plus célèbres sont Les Parapluies de Cherbourg, Belle de jour, Le Dernier Métro ainsi qu'Indochine.",
+    "genre": "Woman",
+    "games": []
+  }
